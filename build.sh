@@ -1,6 +1,6 @@
 # !/bin/bash
 feature=$1
-export feature=feature-1
+export feature=$feature
 
 echo -----------------refresh master-----------------
 
@@ -16,7 +16,7 @@ if git branch -vv -a | grep "$feature"; then git branch -D $feature; fi
 echo -----------------create branch  $feature-----------------
 git checkout -b $feature master
 
-echo 2020-05-12 02:42:33 > $feature.txt
+echo 2020-05-12 02:45:28 > $feature.txt
 git add $feature.txt
 git commit -m "add $feature.txt"
 git push -u origin $feature 
@@ -24,7 +24,7 @@ git push -u origin $feature
 echo ------------------------changes on master------------------------
 
 git checkout master
-echo 2020-05-12 02:42:33: after checkout $feature > master.txt
+echo 2020-05-12 02:45:28: after checkout $feature > master.txt
 git add master.txt build.sh
 git commit --author="others <others@hp.com>" -m "modify master"
 git push 
