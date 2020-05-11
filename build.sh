@@ -16,7 +16,7 @@ if git branch -vv -a | grep "$feature"; then git branch -D $feature; fi
 echo -----------------create branch  $feature-----------------
 git checkout -b $feature master
 
-echo 2020-05-12 02:45:28 > $feature.txt
+echo 2020-05-12 02:51:09 > $feature.txt
 git add $feature.txt
 git commit -m "add $feature.txt"
 git push -u origin $feature 
@@ -24,10 +24,13 @@ git push -u origin $feature
 echo ------------------------changes on master------------------------
 
 git checkout master
-echo 2020-05-12 02:45:28: after checkout $feature > master.txt
+echo 2020-05-12 02:51:09: after checkout $feature > master.txt
 git add master.txt build.sh
-git commit --author="others <others@hp.com>" -m "modify master"
+git commit --author="others <others@hp.com>" -m "when develop $feature branch"
 git push 
+
+echo ------------------------branch------------------------
+git branch -vv -a
 
 echo ------------------------log------------------------
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
