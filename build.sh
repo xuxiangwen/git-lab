@@ -10,13 +10,13 @@ git merge origin/master
 
 echo -----------------remove $feature created before-----------------
 git branch -vv -a
-if git branch -vv -a | grep "origin/$feature"; then git push origin -D $feature; fi  
-if git branch -vv -a | grep "$feature"; then git branch -D $feature; fi
+if git branch -vv -a | grep "origin/$feature"; then git push origin --delete $feature; fi 
+if git branch -vv -a | grep "$feature"; then git branch --delete $feature; fi
 
 echo -----------------create branch  $feature-----------------
 git checkout -b $feature master
 
-echo 2020-05-12 02:51:09 > $feature.txt
+echo 2020-05-12 12:16:16 > $feature.txt
 git add $feature.txt
 git commit -m "add $feature.txt"
 git push -u origin $feature 
@@ -24,7 +24,7 @@ git push -u origin $feature
 echo ------------------------changes on master------------------------
 
 git checkout master
-echo 2020-05-12 02:51:09: after checkout $feature > master.txt
+echo 2020-05-12 12:16:16: after checkout $feature > master.txt
 git add master.txt build.sh
 git commit --author="others <others@hp.com>" -m "when develop $feature branch"
 git push 
